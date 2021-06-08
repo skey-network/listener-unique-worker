@@ -1,0 +1,6 @@
+.env
+.env.example
+*.deb
+app.js
+dist
+node_modules

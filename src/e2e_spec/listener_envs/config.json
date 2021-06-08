@@ -1,0 +1,18 @@
+[
+  {
+    "supportedActions": ["open"],
+    "devices": ["fmb920", "fmb900"],
+    "json": "{\"rule\":\"fmb\",\"device_address\":\"{device_address}\", \"action_name\":\"{action_name}\", \"key_id\":\"{key_id}\", \"function_name\":\"{function_name}\", \"device_model\":\"{device_model}\"}"
+  },
+  {
+    "supportedActions": ["close", "open"],
+    "devices": ["anyDev", "testDev"],
+    "json": "{\"rule\":\"dev\",\"device_address\":\"{device_address}\", \"action_name\":\"{action_name}\", \"key_id\":\"{key_id}\", \"function_name\":\"{function_name}\", \"device_model\":\"{device_model}\"}",
+    "jsonByAction": [
+      {
+        "action": "close",
+        "json": "{\"rule\":\"dev-close\",\"device_address\":\"{device_address}\", \"action_name\":\"{action_name}\", \"key_id\":\"{key_id}\", \"function_name\":\"{function_name}\", \"device_model\":\"{device_model}\"}"
+      }
+    ]
+  }
+]

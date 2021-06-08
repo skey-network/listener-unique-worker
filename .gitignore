@@ -1,0 +1,6 @@
+node_modules
+dist
+app.js
+.env
+.deb_env
+/config.json

@@ -1,0 +1,42 @@
+{
+  "name": "supplier-oracle",
+  "version": "1.0.0",
+  "description": "Oracle",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run build && node ./dist/app.js",
+    "build": "rm -rf ./dist && tsc",
+    "test": "jest --config test.config.json",
+    "test-e2e": "jest --config test-e2e.config.json",
+    "dockerize": "docker build . -t supplier-listener"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@opentelemetry/core": "^0.19.0",
+    "@opentelemetry/exporter-collector": "^0.19.0",
+    "@opentelemetry/metrics": "^0.19.0",
+    "@opentelemetry/node": "^0.19.0",
+    "@opentelemetry/plugin-express": "^0.15.0",
+    "@opentelemetry/plugin-http": "^0.18.2",
+    "@opentelemetry/plugin-https": "^0.18.2",
+    "@opentelemetry/tracing": "^0.19.0",
+    "@types/node": "^14.14.20",
+    "@types/node-fetch": "^2.5.7",
+    "@waves/ts-lib-crypto": "^1.4.3",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1",
+    "npm": "^7.12.0",
+    "rsmq": "^0.12.3",
+    "typescript": "^4.1.3",
+    "yargs-parser": "^20.2.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/lodash.sample": "^4.2.6",
+    "jest": "^26.6.3",
+    "lodash.sample": "^4.2.1",
+    "skey-lib": "smartkeyplatform/SmartKey-Libs",
+    "ts-jest": "^26.5.6"
+  }
+}
