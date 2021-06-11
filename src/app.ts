@@ -33,13 +33,6 @@ try {
   PerDeviceConfig = []
 }
 
-if (process.env.IOT_PLATFORM_URL == undefined) {
-  console.log(
-    'Env file not found or empty, specify --env-file=path_to_file, or provide required variables via docker env'
-  )
-  exit()
-}
-
 ////////////////////////////////////// dummy server, in case docker hosting requires one in container ////////////////////////////////
 
 if (process.env.PORT) {

@@ -1,5 +1,6 @@
 import RedisSMQ from 'rsmq'
 import ActionParams from '../action_params'
+import { RedisConnection, RedisConnectionOptions } from './redis_connection'
 
 const queueName = 'all-txes'
 
@@ -7,8 +8,14 @@ class Consumer {
   rsmq: RedisSMQ
   consumer: (params: ActionParams) => void
 
-  constructor(consumer: (params: ActionParams) => void) {
-    this.rsmq = new RedisSMQ({ host: '127.0.0.1', port: 6379, ns: 'listener' })
+  constructor(
+    consumer: (params: ActionParams) => void,
+    options?: RedisConnectionOptions
+  ) {
+    this.rsmq = new RedisSMQ({
+      client: RedisConnection.CreateClient(options ?? {}),
+      ns: 'listener'
+    })
     this.consumer = consumer
     const that = this
     try {
@@ -44,16 +51,22 @@ class Consumer {
       console.log(err)
       return
     }
-    try {
-      const response = resp as RedisSMQ.QueueMessage
-      if (response.id) {
-        const payload = JSON.parse(response.message) as ActionParams
-        this.consumer(payload)
+    if (!(resp as any).id) {
+      setTimeout(() => {
+        this.setConsumer()
+      }, 500)
+    } else {
+      try {
+        const response = resp as RedisSMQ.QueueMessage
+        if (response.id) {
+          const payload = JSON.parse(response.message) as ActionParams
+          this.consumer(payload)
+        }
+      } catch {
+        // log somewhere about error?
       }
-    } catch {
-      // log somewhere about error?
+      this.setConsumer() // take new message
     }
-    this.setConsumer() // take new message
   }
 }
 

@@ -52,6 +52,20 @@ docker run -i <place docker envs here> `docker build -q .`
 - Running from sources - it will expect .env & config.json in project folder
 - Running in docker container - path to config.json file should be provided as described in [this section](Building-and-running-docker-image), including rest of env specified as docker env file or parameters
 
+## Redis
+
+Redis server address
+
+```
+REDIS_HOST="127.0.0.1"
+```
+
+Redis server port
+
+```
+REDIS_PORT="6379"
+```
+
 ## Debug info
 
 Enables debug messages, COMMENT OUT do DISABLE

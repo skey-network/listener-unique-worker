@@ -3,9 +3,6 @@ import Consumer from './queue/consumer'
 import { Producer } from './queue/producer'
 import Uniqueness from './uniqueness'
 
-const cleanUpTrigger = 200
-const maxTimestampDiff = 120 * 1000 // 120s
-
 class Filter {
   uniqueness: Uniqueness
   consumer: Consumer
