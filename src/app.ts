@@ -22,7 +22,7 @@ try {
   PerDeviceConfig = JSON.parse(
     fs.readFileSync(args['config-file'] ?? './config.json').toString()
   )
-} catch (ex) {
+} catch (ex: any) {
   console.log(ex.code)
   if (ex.code == 'ENOENT') {
     console.log('Per device confuguration file (config.json) not found. Ignoring')
